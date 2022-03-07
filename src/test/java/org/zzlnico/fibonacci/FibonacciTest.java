@@ -1,5 +1,7 @@
 package org.zzlnico.fibonacci;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,9 +19,20 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 class FibonacciTest {
+    private Fibonacci fibonacci;
+
+    @BeforeEach
+    public void setup() {
+        fibonacci = new Fibonacci();
+    }
+
+    @AfterEach
+    public void finish() {
+        fibonacci = null;
+    }
+
     @Test
     public void shouldComputeReturnZeroIfTheNumberIsZero() {
-        var fibonacci = new Fibonacci();
         int expectedValue = 0;
         int obtainedValue = fibonacci.compute(0);
 
@@ -28,7 +41,6 @@ class FibonacciTest {
 
     @Test
     public void shouldComputeReturnOneIfTheNumberIsOne() {
-        var fibonacci = new Fibonacci();
         int expectedValue = 1;
         int obtainedValue = fibonacci.compute(1);
 
@@ -37,7 +49,6 @@ class FibonacciTest {
 
     @Test
     public void shouldComputeReturnOneIfTheNumberIsTwo() {
-        var fibonacci = new Fibonacci();
         int expectedValue = 1;
         int obtainedValue = fibonacci.compute(2);
 
@@ -46,7 +57,6 @@ class FibonacciTest {
 
     @Test
     public void shouldComputeReturnTwoIfTheNumberIsThree() {
-        var fibonacci = new Fibonacci();
         int expectedValue = 2;
         int obtainedValue = fibonacci.compute(3);
 
@@ -55,7 +65,6 @@ class FibonacciTest {
 
     @Test
     public void shouldComputeReturn55IfTheNumberIsTen() {
-        var fibonacci = new Fibonacci();
         int expectedValue = 55;
         int obtainedValue = fibonacci.compute(10);
 
@@ -64,7 +73,6 @@ class FibonacciTest {
 
     @Test
     public void shouldComputeOfANegativeNumberRaiseAnException() {
-        var fibonacci = new Fibonacci();
         assertThrows(RuntimeException.class, () -> fibonacci.compute(-1));
     }
 }
